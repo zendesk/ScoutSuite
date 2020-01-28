@@ -84,6 +84,10 @@ class EC2Instances(AWSResources):
         else:
             instance["iam_role"] = None
 
+        instance["metadata_options"] = raw_instance["MetadataOptions"]
+        instance["tags"] = await self.facade.ec2.get_and_set_ec2_instance_tags(
+            raw_instance
+        )
         return id, instance
 
     @staticmethod
