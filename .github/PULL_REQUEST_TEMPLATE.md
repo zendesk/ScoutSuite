@@ -1,4 +1,19 @@
-# Description
+# Zendesk Requirements
+
+## Description¬
+A few sentences describing the overall goals of the pull request's commits.¬
+
+## JIRA ticket number¬
+https://zendesk.atlassian.net/browse/SECURE-XXXX¬
+
+## CODEOWNERS¬
+
+Changes to the repo must be reviewed and approved by a member of @zendesk/secure¬
+
+
+
+
+# ScoutSuite Upstream Requirements
 
 **Make sure the PR is against the `develop` branch (see [Contributing](https://github.com/nccgroup/ScoutSuite/blob/master/CONTRIBUTING.md)).**
 
