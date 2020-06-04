@@ -57,6 +57,7 @@ class ELBFacade(AWSBaseFacade):
                 lambda: elb_client.describe_tags(
                     LoadBalancerNames=[load_balancer['LoadBalancerName']])['TagDescriptions'][0]['Tags']
             )
+            load_balancer['Tags'] = {x['Key']: x['Value'] for x in load_balancer['Tags']}
         except Exception as e:
             print_exception('Failed to describe ELB load balancer tags: {}'.format(e))
 
