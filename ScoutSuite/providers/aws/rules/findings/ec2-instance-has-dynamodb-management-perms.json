@@ -1,0 +1,11 @@
+{
+    "description": "EC2 Instace with DynamoDB Management Permissions",
+    "rationale": "Compute elements (EC2 instances, ECS containers, Lambda functions) must not have access to managerial actions such as creating/deleting tables, altering the backup settings, or altering the encryption properties of a table.",
+    "references": ["https://zendesk.atlassian.net/wiki/spaces/SEC/pages/771261565/AWS+Service+Hardening+Guidelines#AWSServiceHardeningGuidelines-DynamoDB"],
+    "dashboard": "EC2 Instances",
+    "remediation": "",
+    "path": ""
+    "conditions": [
+        ["_INCLUDE_(conditions/dynamodb-management-action.json)", "", ""]
+    ]
+}
