@@ -1,20 +1,28 @@
 {
   "conditions": [
-    "this",
-    "containAtLeastOneOf",
+    "and",
     [
-      "dynamodb:CreateBackup",
-      "dynamodb:CreateGlobalTable",
-      "dynamodb:CreateTable",
-      "dynamodb:DeleteBackup",
-      "dynamodb:DeleteTable",
-      "dynamodb:RestoreTableFromBackup",
-      "dynamodb:RestoreTableToPointInTime",
-      "dynamodb:TagResource",
-      "dynamodb:UntagResource",
-      "dynamodb:UpdateTable",
-      "dynamodb:UpdateTimeToLive",
-      "dax:*"
+      "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.Action",
+      "containAtLeastOneOf",
+      [
+        "dynamodb:CreateBackup",
+        "dynamodb:CreateGlobalTable",
+        "dynamodb:CreateTable",
+        "dynamodb:DeleteBackup",
+        "dynamodb:DeleteTable",
+        "dynamodb:RestoreTableFromBackup",
+        "dynamodb:RestoreTableToPointInTime",
+        "dynamodb:TagResource",
+        "dynamodb:UntagResource",
+        "dynamodb:UpdateTable",
+        "dynamodb:UpdateTimeToLive",
+        "dax:*"
+      ]
+    ],
+    [
+      "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.Effect",
+      "equal",
+      "Allow"
     ]
   ]
 }
