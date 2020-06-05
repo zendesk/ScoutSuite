@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    "this",
+    "containAtLeastOneOf",
+    [
+      "dynamodb:CreateBackup",
+      "dynamodb:CreateGlobalTable",
+      "dynamodb:CreateTable",
+      "dynamodb:DeleteBackup",
+      "dynamodb:DeleteTable",
+      "dynamodb:RestoreTableFromBackup",
+      "dynamodb:RestoreTableToPointInTime",
+      "dynamodb:TagResource",
+      "dynamodb:UntagResource",
+      "dynamodb:UpdateTable",
+      "dynamodb:UpdateTimeToLive",
+      "dax:*"
+    ]
+  ]
+}
