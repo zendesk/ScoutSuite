@@ -6,11 +6,12 @@
   ],
   "dashboard_name": "Instance Profiles",
   "remediation": "",
-  "path": "iam.roles.id.instance_profiles.id",
+  "path": "iam.roles.id",
   "conditions": [
     "and",
+    ["iam.roles.id", "withKey", "instance_profiles"],
     [
-      "iam.roles.id.instance_profiles",
+      "iam.roles.id.instance_profiles.arn",
       "containAtLeastOneOf",
       "_GET_VALUE_AT(ec2.regions.id.vpcs.id.instances.id.iam_instance_profile_arn)"
     ],
@@ -31,7 +32,8 @@
           "dynamodb:UntagResource",
           "dynamodb:UpdateTable",
           "dynamodb:UpdateTimeToLive",
-          "dax:*"
+          "dax:*",
+          "ec2:DescribeSubnets"
         ]
       ],
       [
