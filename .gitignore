@@ -68,3 +68,6 @@ report-*
 # Private folders
 /private*/
 /**/private*/
+
+# Private environment variables
+.env*
