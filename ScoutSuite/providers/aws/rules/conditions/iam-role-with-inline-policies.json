@@ -1,0 +1,7 @@
+{
+  "conditions": [
+    "and",
+    ["iam.roles.id.", "withKey", "inline_policies"],
+    ["iam.roles.id.inline_policies", "notEmpty", ""]
+  ]
+}

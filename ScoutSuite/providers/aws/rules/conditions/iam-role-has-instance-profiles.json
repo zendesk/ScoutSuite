@@ -1,0 +1,3 @@
+{
+  "conditions": ["iam.roles.id.instance_profiles", "notEmpty", ""]
+}

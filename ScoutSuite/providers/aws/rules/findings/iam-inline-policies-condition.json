@@ -1,0 +1,17 @@
+{
+  "description": "IAM Role has inline policies and an Instance Profile with a disallowed Action",
+  "dashboard_name": "Policies",
+  "path": "iam.roles.id",
+  "conditions": [
+    "and",
+    ["iam.roles.id.", "withKey", "inline_policies"],
+    ["iam.roles.id.inline_policies", "notEmpty", ""],
+    ["iam.roles.id.", "withKey", "instance_profiles"],
+    ["iam.roles.id.instance_profiles", "notEmpty", ""],
+    [
+      "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.Action",
+      "containAtLeastOneOf",
+      ["ec2:DescribeVolumes"]
+    ]
+  ]
+}

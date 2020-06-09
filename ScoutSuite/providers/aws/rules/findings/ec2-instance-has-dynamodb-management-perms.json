@@ -9,38 +9,23 @@
   "path": "iam.roles.id",
   "conditions": [
     "and",
-    ["iam.roles.id", "withKey", "instance_profiles"],
+    ["iam.roles.id.", "withKey", "inline_policies"],
+    ["iam.roles.id.inline_policies", "notEmpty", ""],
+    ["iam.roles.id.inline_policies.id.PolicyDocument.", "withKey", "Statement"],
     [
-      "iam.roles.id.instance_profiles.arn",
-      "containAtLeastOneOf",
-      "_GET_VALUE_AT(ec2.regions.id.vpcs.id.instances.id.iam_instance_profile_arn)"
+      "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.",
+      "withKey",
+      "Action"
     ],
     [
-      "and",
-      [
-        "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.Action",
-        "containAtLeastOneOf",
-        [
-          "dynamodb:CreateBackup",
-          "dynamodb:CreateGlobalTable",
-          "dynamodb:CreateTable",
-          "dynamodb:DeleteBackup",
-          "dynamodb:DeleteTable",
-          "dynamodb:RestoreTableFromBackup",
-          "dynamodb:RestoreTableToPointInTime",
-          "dynamodb:TagResource",
-          "dynamodb:UntagResource",
-          "dynamodb:UpdateTable",
-          "dynamodb:UpdateTimeToLive",
-          "dax:*",
-          "ec2:DescribeSubnets"
-        ]
-      ],
-      [
-        "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.Effect",
-        "equal",
-        "Allow"
-      ]
+      "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.Action",
+      "notEmpty",
+      ""
+    ],
+    [
+      "iam.roles.id.inline_policies.id.PolicyDocument.Statement.id.Action.",
+      "containAtLeastOneOf",
+      ["ec2:TerminateInstances"]
     ]
   ]
 }
