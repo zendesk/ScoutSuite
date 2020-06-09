@@ -2,6 +2,7 @@ from ScoutSuite.providers.aws.resources.base import AWSResources
 from ScoutSuite.providers.aws.facade.base import AWSFacade
 from ScoutSuite.providers.aws.utils import get_name
 from ScoutSuite.providers.aws.utils import get_keys
+from ScoutSuite.providers.aws.utils import set_tags
 import re
 
 
