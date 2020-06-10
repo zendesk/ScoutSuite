@@ -136,7 +136,6 @@ class IAMFacade(AWSBaseFacade):
         try:
             user_tagset = await run_concurrently(lambda: client.list_user_tags(UserName=user['UserName']))
             user['tags'] = {x['Key']: x['Value'] for x in user_tagset['Tags']}
-            print(user['tags'])
         except ClientError as e:
             if e.response["Error"]["Code"] == "NoSuchEntity":
                 #  If the user has not been assigned tags, the operation returns a 404 (NoSuchEntity ) error.
