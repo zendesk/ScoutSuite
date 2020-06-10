@@ -59,7 +59,6 @@ class EC2Facade(AWSBaseFacade):
                     instance['ReservationId'] = reservation['ReservationId']
                     instance['OwnerId'] = reservation['OwnerId']
                     instances.append(instance)
-
             return instances
         except Exception as e:
             print_exception(f'Failed to describe EC2 instances: {e}')
@@ -199,7 +198,6 @@ class EC2Facade(AWSBaseFacade):
     async def get_and_set_ec2_instance_tags(self, raw_instance: {}):
         if 'Tags' in raw_instance:
             instance = {x['Key']: x['Value'] for x in raw_instance['Tags']}
-            print("working on tags")
         else:
             instance = {}
         return instance
