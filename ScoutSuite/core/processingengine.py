@@ -48,7 +48,11 @@ class ProcessingEngine(object):
                 try:
                     setattr(rule, 'checked_items', 0)
                     for a in dir(rule):
-                        if not a.startswith("__") and not a in ["set_definition", "get_attribute", "to_string"]:
+                        if not a.startswith("__") and a not in [
+                            "set_definition",
+                            "get_attribute",
+                            "to_string",
+                        ]:
                             rule_dict[str(a)] = getattr(rule, a)
                     if skip_dashboard:
                         continue
