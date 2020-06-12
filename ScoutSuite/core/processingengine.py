@@ -47,19 +47,12 @@ class ProcessingEngine(object):
                         rule_dict[attr] = getattr(rule, attr)
                 try:
                     setattr(rule, 'checked_items', 0)
-                    rule_dict['items'] = recurse(cloud_provider.services, cloud_provider.services, path, [], rule, True)
+                    for a in dir(rule):
+                        if not a.startswith("__") and not a in ["set_definition", "get_attribute", "to_string"]:
+                            rule_dict[str(a)] = getattr(rule, a)
                     if skip_dashboard:
                         continue
-                    rule_dict["dashboard_name"] = rule.dashboard_name
-                    rule_dict['checked_items'] = rule.checked_items
                     rule_dict['flagged_items'] = len(cloud_provider.services[service][self.ruleset.rule_type][rule.key]['items'])
-                    rule_dict['service'] = rule.service
-                    rule_dict['rationale'] = rule.rationale if hasattr(rule, 'rationale') else None
-                    rule_dict['remediation'] = rule.remediation if hasattr(rule, 'remediation') else None
-                    rule_dict['compliance'] = rule.compliance if hasattr(rule, 'compliance') else None
-                    rule_dict['references'] = rule.references if hasattr(rule, 'references') else None
-                    rule_dict['args'] = rule.args if hasattr(rule, "args") else None
-                    rule_dict['conditions'] = rule.conditions if hasattr(rule, "conditions") else None
                 except Exception as e:
                     print_exception('Failed to process rule defined in %s: %s' % (rule.filename, e))
                     # Fallback if process rule failed to ensure report creation and data dump still happen
