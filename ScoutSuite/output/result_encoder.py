@@ -133,6 +133,8 @@ class JavaScriptEncoder(ScoutResultEncoder):
                 config_dirname = os.path.dirname(config_filename)
                 if not os.path.isdir(config_dirname):
                     os.makedirs(config_dirname)
+                if os.path.exists(config_filename):
+                    os.remove(config_filename)            
                 return open(config_filename, 'wt')
             except Exception as e:
                 print_exception(e)
