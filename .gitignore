@@ -55,7 +55,7 @@ report-*
 .idea/
 
 # Vs Code
-.vscode/
+# .vscode/
 
 # Mac cruft
 .DS_Store
